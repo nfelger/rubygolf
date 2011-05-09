@@ -12,12 +12,6 @@ class Golf
       (1..n).inject :*
     end
   
-    def hole5(b)
-      (1..b.length).map {|n|
-        b.combination(n).to_a.reject {|s| !b.join(",").include?(s.join(","))}
-      }.flatten(1)
-    end
-  
     def hole4 a
       a.map { |e|
         case e
@@ -27,33 +21,38 @@ class Golf
         end
       }
     end
-  
-    def hole7 l
-      r = []
-      l.each do |i|
-          f = false
-          r = r.map do |s|
-            if i == s[0] - 1
-              f = true
-              [s[0] - 1, s[-1]]
-            elsif i == s[-1] + 1
-              f = true
-              [s[0], s[-1] + 1]
-            else
-              s
-            end
-          end
-          r << [i] unless f
-        end
-        r.map {|s|s.size == 1 ? s[0].to_s : "#{s[0]}-#{s[-1]}"}
-      end
-  
 
+    def hole5 b
+      (1..b.length).map {|n|
+        b.combination(n).to_a.reject {|s| !b.join(",").include?(s.join(","))}
+      }.flatten(1)
+    end
+    
     def hole6 n
       (1..n).map {|i|
         s = "#{'fizz' if i % 3 == 0}#{'buzz' if i % 5 == 0}"
         s == '' ? i : s
       }
+    end
+    
+    def hole7 l
+      r = []
+      l.each do |i|
+        f = false
+        r = r.map do |s|
+          if i == s[0] - 1
+            f = true
+            [s[0] - 1, s[-1]]
+          elsif i == s[-1] + 1
+            f = true
+            [s[0], s[-1] + 1]
+          else
+            s
+          end
+        end
+        r << [i] unless f
+      end
+      r.map {|s|s.size == 1 ? s[0].to_s : "#{s[0]}-#{s[-1]}"}
     end
     
     def hole8 n
@@ -80,4 +79,3 @@ class Golf
     end
   end
 end
-
