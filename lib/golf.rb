@@ -14,11 +14,9 @@ class Golf
   
     def hole4 a
       a.map { |e|
-        case e
-          when /man\((\w+)\)/   : "hat(man(#{$1}))"
-          when /dog\((\w+)\)/   : "dog(#{$1}(bone))"
-          when /cat\((\w+)\)/   : "dead(#{$1})"
-        end
+        e.gsub(/man.(\w*)/, 'hat(man(\1)').
+          gsub(/dog.(\w*)/, 'dog(\1(bone)').
+          gsub(/cat.(\w*)/, 'dead(\1')
       }
     end
 
