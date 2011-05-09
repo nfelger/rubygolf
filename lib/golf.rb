@@ -21,8 +21,9 @@ class Golf
     end
 
     def hole5 b
-      (1..b.length).map {|n|
-        b.combination(n).to_a.reject {|s| !b.join(",").include?(s.join(","))}
+      s = b.size-1
+      (0..s).map {|n|
+        (0..s-n).map{|m| b[m..m+n]}
       }.flatten(1)
     end
     
