@@ -9,7 +9,7 @@ class Golf
     end
     
     def hole3 n
-      (1..n).inject :*
+      hole1(1..n)
     end
   
     def hole4 a
