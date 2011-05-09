@@ -1,7 +1,7 @@
 class Golf
   class << self
     def hole1 a
-      a.reduce 1,:*
+      a.inject :*
     end
     
     def hole2 s
