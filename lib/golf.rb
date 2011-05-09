@@ -28,7 +28,7 @@ class Golf
       }
     end
   
-  def hole7(l)
+    def hole7 l
       r = []
       l.each do |i|
           f = false
