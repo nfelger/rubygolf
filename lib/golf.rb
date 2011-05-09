@@ -15,8 +15,8 @@ class Golf
     def hole4 a
       a.map { |e|
         e.gsub(/man.(\w*)/, 'hat(man(\1)').
-          gsub(/dog.(\w*)/, 'dog(\1(bone)').
-          gsub(/cat.(\w*)/, 'dead(\1')
+          gsub(/(dog.\w*)/, '\1(bone)').
+          gsub(/cat/, 'dead')
       }
     end
 
