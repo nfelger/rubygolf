@@ -35,23 +35,15 @@ class Golf
     end
     
     def hole7 l
-      r = []
+      r = [c = [l.shift]]
       l.each do |i|
-        f = false
-        r = r.map do |s|
-          if i == s[0] - 1
-            f = true
-            [s[0] - 1, s[-1]]
-          elsif i == s[-1] + 1
-            f = true
-            [s[0], s[-1] + 1]
-          else
-            s
-          end
+        if i == (c[-1] || 0) + 1
+          c[1] = i
+        else
+          r << c = [i]
         end
-        r << [i] unless f
       end
-      r.map {|s|s.size == 1 ? s[0].to_s : "#{s[0]}-#{s[-1]}"}
+      r.map { |s| s.join '-' }
     end
     
     def hole8 n
